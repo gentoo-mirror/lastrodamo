@@ -28,7 +28,3 @@ location = /path/to/lastrodamo-overlay
 sync-type = git
 sync-uri = https://codeberg.org/lastrodamo/gentoo-overlay.git
 ```
-
-## Signature
-
-This overlay commits are signed with the PGP key `` that I also use in Gentoo's official portage tree contributions.
