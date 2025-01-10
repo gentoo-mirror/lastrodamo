@@ -45,6 +45,7 @@ DEPEND="
 	dev-libs/c-blosc
 	dev-python/numpy
 	dev-python/pyside6
+	dev-python/pyside6-tools
 	sys-libs/zlib
 	x11-libs/gtk+
 	sys-devel/bison
