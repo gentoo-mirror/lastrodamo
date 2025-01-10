@@ -7,15 +7,19 @@ inherit cmake
 
 DESCRIPTION="LuxCoreRender is a physically based and unbiased rendering engine"
 HOMEPAGE="https://luxcorerender.org/"
-#SRC_URI="https://codeberg.org/lastrodamo/LuxCoreRender/archive/luxcorerender-${PV}alpha3.tar.gz"
-SRC_URI="https://codeberg.org/lastrodamo/LuxCoreRender/archive/master.tar.gz"
+if [[ ${PV} == 9999 ]] ; then
+    EGIT_REPO_URI="https://codeberg.org/lastrodamo/LuxCoreRender"
+    inherit git-r3
+else
+    SRC_URI="https://codeberg.org/lastrodamo/LuxCoreRender/archive/luxcorerender-${PV}alpha3.tar.gz"
+    S="${WORKDIR}/luxcorerender"
+
+    KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-S="${WORKDIR}/luxcorerender"
 
 DEPEND="
 	app-text/doxygen
@@ -56,10 +60,6 @@ BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 "
-
-src_unpack() {
-	unpack ${A}
-}
 
 src_prepare() {
 	default
