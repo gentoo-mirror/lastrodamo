@@ -21,7 +21,7 @@ layman -fa lastrodamo
 ### Installing in `/etc/portage/repos.conf/lastrodamo.conf`
 
 ```
-[Case_Of]
+[lastrodamo]
 # Set the priority you wish to use
 priority = 1000
 location = /path/to/lastrodamo-overlay
