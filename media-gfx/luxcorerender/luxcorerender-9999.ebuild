@@ -19,9 +19,9 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="2"
-IUSE=""
+IUSE="cuda"
 
-DEPEND="
+RDEPEND="
 	app-text/doxygen
 	media-libs/openjpeg
 	media-libs/libpng
@@ -34,12 +34,11 @@ DEPEND="
 	dev-libs/boost:=[python,numpy]
 	media-libs/embree
 	media-libs/oidn
-	dev-util/nvidia-cuda-toolkit
-	dev-libs/optix
+	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	media-libs/openimageio
 	media-libs/opencolorio
 	media-libs/opensubdiv
-	media-gfx/openvdb
+	media-gfx/openvdb:=[static-libs]
 	media-libs/glfw
 	dev-cpp/tbb
 	dev-libs/c-blosc
@@ -51,9 +50,10 @@ DEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	dev-cpp/eigen
+	dev-libs/stb
 "
 
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 BDEPEND="
 	dev-build/cmake
