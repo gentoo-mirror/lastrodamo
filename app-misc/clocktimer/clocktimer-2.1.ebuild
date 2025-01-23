@@ -11,14 +11,14 @@ if [[ ${PV} == 9999 ]] ; then
     EGIT_REPO_URI="https://codeberg.org/lastrodamo/Clocktimer"
     inherit git-r3
 else
-    SRC_URI="https://codeberg.org/lastrodamo/Clocktimer/archive/clocktimer-${PV}.tar.gz"
+    SRC_URI="https://codeberg.org/lastrodamo/Clocktimer/archive/clocktimer-${PV}-alpha1.tar.gz"
     S="${WORKDIR}/clocktimer"
 
     KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="GNU GPL-3.0"
-SLOT="2"
+LICENSE="GPL-3"
+SLOT="0"
 IUSE=""
 
 RDEPEND="
