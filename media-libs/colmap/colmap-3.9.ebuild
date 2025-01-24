@@ -11,7 +11,7 @@ HOMEPAGE="https://colmap.github.io/"
 EGIT_REPO_URI="https://github.com/colmap/colmap.git"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="3.9"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="

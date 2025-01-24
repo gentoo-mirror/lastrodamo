@@ -52,7 +52,7 @@ src_install() {
 }
 
 pkg_postinst() {
-i	elog "Clocktimer has been installed."
+	elog "Clocktimer has been installed."
 	elog "You can start using it by running the clocktimer command."
 }
 

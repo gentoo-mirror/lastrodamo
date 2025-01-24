@@ -10,7 +10,7 @@ HOMEPAGE="https://colmap.github.io/"
 SRC_URI="https://github.com/colmap/colmap/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="3.8"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
