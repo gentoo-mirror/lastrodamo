@@ -7,18 +7,18 @@ inherit cmake
 
 DESCRIPTION="Clocktimer is a countdown timer remastered with C++ and Qt6"
 HOMEPAGE="https://codeberg.org/lastrodamo/Clocktimer"
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} = *9999* ]] ; then
     EGIT_REPO_URI="https://codeberg.org/lastrodamo/Clocktimer"
     inherit git-r3
 else
-    SRC_URI="https://codeberg.org/lastrodamo/Clocktimer/archive/clocktimer-${PV}-alpha1.tar.gz"
+    SRC_URI="https://codeberg.org/lastrodamo/Clocktimer/archive/${P}-alpha1.tar.gz"
     S="${WORKDIR}/clocktimer"
 
     KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
-SLOT="2"
+SLOT="3"
 IUSE=""
 
 RDEPEND="
