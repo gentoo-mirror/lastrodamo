@@ -16,10 +16,18 @@ SLOT="3.11"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	sci-libs/ceres-solver
 	dev-libs/boost
+	dev-cpp/eigen
+	sci-libs/flann
 	media-libs/freeimage
-	sci-libs/metis"
+	sci-libs/metis
+	dev-db/sqlite
+	media-libs/glew
+	dev-qt/qtbase
+	dev-qt/qtopengl
+	sci-mathematics/cgal
+	sci-libs/ceres-solver
+"
 
 DEPEND="${RDEPEND}"
 
