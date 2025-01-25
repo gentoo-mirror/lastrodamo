@@ -3,19 +3,12 @@
 
 EAPI=8
 
-inherit cmake xdg-utils git-r3
+inherit cmake xdg-utils
 
 DESCRIPTION="A general-purpose Structure-from-Motion and Multi-View Stereo pipeline."
 HOMEPAGE="https://colmap.github.io/"
-if [[ ${PV} = *9999* ]] ; then
-    EGIT_REPO_URI="https://github.com/colmap/colmap.git"
-    inherit git-r3
-else
-    SRC_URI="https://github.com/colmap/colmap/archive/refs/tags/${PV}.tar.gz"
-    S="${WORKDIR}/colmap"
-
-    KEYWORDS="~amd64 ~x86"
-fi
+SRC_URI="https://github.com/colmap/colmap.git"
+KEYWORDS="~amd64 ~x86"
 
 # SRC_URI="https://github.com/colmap/colmap/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 # EGIT_REPO_URI="https://github.com/colmap/colmap.git"
