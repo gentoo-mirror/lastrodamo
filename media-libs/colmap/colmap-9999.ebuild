@@ -7,11 +7,13 @@ inherit cmake xdg-utils
 
 DESCRIPTION="A general-purpose Structure-from-Motion and Multi-View Stereo pipeline."
 HOMEPAGE="https://colmap.github.io/"
+EGIT_REPO_URI="https://github.com/colmap/colmap.git"
 SRC_URI="https://github.com/colmap/colmap/archive/refs/tags/3.11.1.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
+S="${WORKDIR}/colmap"
+
 # SRC_URI="https://github.com/colmap/colmap/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-# EGIT_REPO_URI="https://github.com/colmap/colmap.git"
 
 LICENSE="BSD"
 SLOT="3.11"
