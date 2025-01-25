@@ -7,9 +7,8 @@ inherit cmake xdg-utils
 
 DESCRIPTION="A general-purpose Structure-from-Motion and Multi-View Stereo pipeline."
 HOMEPAGE="https://colmap.github.io/"
-SRC_URI="https://github.com/colmap/colmap/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-
-# S="${WORKDIR}/colmap"
+SRC_URI="https://github.com/colmap/colmap/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/vlarsson/PoseLib/archive/refs/tags/v0.1.tar.gz -> poselib-0.1.tar.gz"
 
 LICENSE="BSD"
 SLOT="3.11"
@@ -36,27 +35,36 @@ BDEPEND="
 	sys-devel/gcc:13
 "
 
-#CMAKE_IN_SOURCE_BUILD=1
+S="${WORKDIR}/colmap-${PV}"
+
+PATCHES=( "${FILESDIR}/fix-cmake-paths.patch" )
 
 src_prepare() {
 	default
 	cmake_src_prepare
 	# Apply any necessary patches here
+
+	# Unpack PoseLib manually
+	einfo "Unpacking PoseLib"
+	tar -xzf "${DISTDIR}/poselib-0.1.tar.gz" -C "${S}/lib" || die
+
+	# Comment out tests in PoseLib CMakeLists.txt
+	einfo "Disabling PoseLib tests"
+	sed -i 's|add_subdirectory(tests)|# add_subdirectory(tests)|g' "${S}/lib/PoseLib/CMakeLists.txt" || die
 }
 
 src_configure() {
-	cmake_src_configure
-}
+	local mycmakeargs=(
+		-DPoseLib_DIR="${S}/lib/PoseLib"
+		-DCMAKE_CUDA_ARCHITECTURES=75
+	)
 
-src_compile() {
-	cmake_src_compile
+	cmake_src_configure
 }
 
 src_install() {
 	cmake_src_install
 }
-
-MYCMAKEARGS="-DCMAKE_CUDA_ARCHITECTURES=75"
 
 pkg_postinst() {
 	xdg_desktop_database_update
