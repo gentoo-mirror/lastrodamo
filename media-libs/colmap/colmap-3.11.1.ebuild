@@ -8,7 +8,7 @@ inherit cmake xdg-utils
 DESCRIPTION="A general-purpose Structure-from-Motion and Multi-View Stereo pipeline."
 HOMEPAGE="https://colmap.github.io/"
 SRC_URI="https://github.com/colmap/colmap/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/vlarsson/PoseLib/archive/refs/tags/v0.1.tar.gz -> poselib-0.1.tar.gz"
+	https://github.com/PoseLib/PoseLib/archive/refs/tags/v2.0.4.tar.gz -> PoseLib-2.0.4.tar.gz"
 
 LICENSE="BSD"
 SLOT="3.11"
@@ -37,25 +37,17 @@ BDEPEND="
 
 S="${WORKDIR}/colmap-${PV}"
 
-PATCHES=( "${FILESDIR}/fix-cmake-paths.patch" )
-
 src_prepare() {
 	default
 	cmake_src_prepare
 	# Apply any necessary patches here
 
-	# Unpack PoseLib manually
-	einfo "Unpacking PoseLib"
-	tar -xzf "${DISTDIR}/poselib-0.1.tar.gz" -C "${S}/lib" || die
 
-	# Comment out tests in PoseLib CMakeLists.txt
-	einfo "Disabling PoseLib tests"
-	sed -i 's|add_subdirectory(tests)|# add_subdirectory(tests)|g' "${S}/lib/PoseLib/CMakeLists.txt" || die
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DPoseLib_DIR="${S}/lib/PoseLib"
+		-DPoseLib_DIR="${WORKDIR}/PoseLib-2.0.4"
 		-DCMAKE_CUDA_ARCHITECTURES=75
 	)
 
