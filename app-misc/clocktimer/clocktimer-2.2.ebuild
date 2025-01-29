@@ -17,12 +17,6 @@ else
     KEYWORDS="~amd64 ~x86"
 fi
 
-
-
-#SRC_URI="https://codeberg.org/lastrodamo/Clocktimer/archive/master.tar.gz"
-#S="${WORKDIR}/clocktimer"
-#KEYWORDS="~amd64 ~x86"
-
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
@@ -35,8 +29,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND="
-	dev-build/cmake
-	sys-devel/gcc:13
+	sys-devel/gcc
 "
 
 src_prepare() {
